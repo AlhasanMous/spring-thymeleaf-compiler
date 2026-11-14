@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${pageTitle}">المنتجات</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header class="navbar">
+    <h1 th:text="${pageTitle}">المتجر الإلكتروني</h1>
+    <a th:href="@{/products/add}" class="btn">إضافة منتج جديد</a>
+</header>
+
+<main class="container">
+    <p th:if="${products.isEmpty()}" class="empty-msg">لا توجد منتجات حالياً.</p>
+
+    <div class="product-grid">
+        <div class="product-card" th:each="item : ${products}">
+            <img th:src="@{${item.image}}" alt="صورة المنتج" class="product-img" />
+            <h2 th:text="${item.name}">اسم المنتج</h2>
+            <span class="price" th:text="${item.price} + ' $'">0.0 $</span>
+            <p th:text="${item.details}">وصف مختصر للمنتج</p>
+            <a th:href="@{/products/{id}(id=${item.id})}" class="btn-details">عرض التفاصيل</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

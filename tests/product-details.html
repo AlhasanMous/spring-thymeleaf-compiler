@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${product.name}">تفاصيل المنتج</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="details-card">
+    <img th:src="@{${product.image}}" alt="صورة المنتج" class="details-img" />
+    <div class="details-info">
+        <h1 th:text="${product.name}">اسم المنتج</h1>
+        <p class="price" th:text="'السعر: ' + ${product.price} + ' $'">السعر</p>
+        <p class="desc" th:text="${product.details}">التفاصيل الكاملة للمنتج</p>
+        <a th:href="@{/products}" class="btn">العودة إلى المنتجات</a>
+    </div>
+</div>
+</body>
+</html>
